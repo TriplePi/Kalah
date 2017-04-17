@@ -5,7 +5,7 @@
     -fx-background-position: center center;
 }
 
-.cell {
+.oursStones {
     -fx-background-image: url(images/simple_cell.png);
     -fx-background-repeat: stretch;
     -fx-background-size: 103 103;
