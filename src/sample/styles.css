@@ -5,8 +5,16 @@
     -fx-background-position: center center;
 }
 
-.oursStones {
-    -fx-background-image: url(images/simple_cell.png);
-    -fx-background-repeat: stretch;
-    -fx-background-size: 103 103;
-}
+.oursGreenStones {
+     -fx-background-image: url(images/our_stone.png);
+     -fx-background-repeat: stretch;
+     -fx-background-size: 41 40;
+     -fx-background-position: center center;
+ }
+
+ .enemysRedStones {
+     -fx-background-image: url(images/enemy_stone.png);
+     -fx-background-repeat: stretch;
+     -fx-background-size: 41 40;
+     -fx-background-position: center center;
+ }
