@@ -4,3 +4,9 @@
     -fx-background-size: 1024 768;
     -fx-background-position: center center;
 }
+
+.cell {
+    -fx-background-image: url(images/simple_cell.png);
+    -fx-background-repeat: stretch;
+    -fx-background-size: 103 103;
+}
