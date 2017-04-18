@@ -1,7 +1,7 @@
 .pane {
     -fx-background-image: url(images/main_background.png);
     -fx-background-repeat: stretch;
-    -fx-background-size: 1024 768;
+    -fx-background-size: 1034 768;
     -fx-background-position: center center;
 }
 
@@ -10,6 +10,7 @@
      -fx-background-repeat: stretch;
      -fx-background-size: 41 40;
      -fx-background-position: center center;
+
  }
 
  .enemysRedStones {
