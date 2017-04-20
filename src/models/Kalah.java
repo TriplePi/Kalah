@@ -1,3 +1,5 @@
+package models;
+
 /**
  * Created by TriplePi on 16.04.2017.
  */

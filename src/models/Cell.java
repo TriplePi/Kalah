@@ -1,3 +1,5 @@
+package models;
+
 /**
  * Created by TriplePi on 16.04.2017.
  */
@@ -23,4 +25,7 @@ public class Cell {
         stones++;
     }
 
+    void setNext(Cell next){
+        this.next = next;
+    }
 }

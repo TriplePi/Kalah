@@ -10,21 +10,21 @@
 
 <AnchorPane prefHeight="768.0" prefWidth="1030.0" snapToPixel="false" styleClass="pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <ImageView fx:id="1ours" fitHeight="103.0" fitWidth="103.0" layoutX="169.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="2ours" fitHeight="103.0" fitWidth="103.0" layoutX="292.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="3ours" fitHeight="103.0" fitWidth="103.0" layoutX="410.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="4ours" fitHeight="103.0" fitWidth="103.0" layoutX="524.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="5ours" fitHeight="103.0" fitWidth="103.0" layoutX="640.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="6ours" fitHeight="103.0" fitWidth="103.0" layoutX="760.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="6enemys" fitHeight="103.0" fitWidth="103.0" layoutX="174.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="5enemys" fitHeight="103.0" fitWidth="103.0" layoutX="292.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="4enemys" fitHeight="103.0" fitWidth="103.0" layoutX="404.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="3enemys" fitHeight="103.0" fitWidth="103.0" layoutX="524.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="2enemys" fitHeight="103.0" fitWidth="103.0" layoutX="640.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="1enemys" fitHeight="103.0" fitWidth="103.0" layoutX="760.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="enemysKalah" fitHeight="207.0" fitWidth="116.0" layoutX="35.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="oursKalah" fitHeight="207.0" fitWidth="116.0" layoutX="881.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="whosTurnToGo" layoutX="410.0" layoutY="109.0" prefHeight="70.0" prefWidth="202.0" textAlignment="CENTER" />
+      <FlowPane fx:id="oneOurs" prefHeight="103.0" prefWidth="103.0" layoutX="169.0" layoutY="394.0" />
+      <FlowPane fx:id="twoOurs" prefHeight="103.0" prefWidth="103.0" layoutX="292.0" layoutY="394.0" />
+      <FlowPane fx:id="threeOurs" prefHeight="103.0" prefWidth="103.0" layoutX="410.0" layoutY="394.0" />
+      <FlowPane fx:id="fourOurs" prefHeight="103.0" prefWidth="103.0" layoutX="524.0" layoutY="394.0" />
+      <FlowPane fx:id="fiveOurs" prefHeight="103.0" prefWidth="103.0" layoutX="640.0" layoutY="394.0" />
+      <FlowPane fx:id="sixOurs" prefHeight="103.0" prefWidth="103.0" layoutX="760.0" layoutY="394.0" />
+      <FlowPane fx:id="sixEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="174.0" layoutY="243.0" />
+      <FlowPane fx:id="fiveEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="292.0" layoutY="243.0" />
+      <FlowPane fx:id="fourEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="404.0" layoutY="243.0" />
+      <FlowPane fx:id="threeEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="524.0" layoutY="243.0" />
+      <FlowPane fx:id="twoEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="640.0" layoutY="243.0" />
+      <FlowPane fx:id="oneEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="760.0" layoutY="244.0" />
+      <FlowPane fx:id="enemysKalah" prefHeight="207.0" prefWidth="116.0" layoutX="35.0" layoutY="243.0" />
+      <FlowPane fx:id="oursKalah" prefHeight="207.0" prefWidth="116.0" layoutX="881.0" layoutY="295.0" />
+      <Label fx:id="whosTurnToGo" layoutX="410.0" layoutY="109.0" prefHeight="70.0" prefWidth="202.0" textAlignment="CENTER" onMouseClicked="#start"/>
       <Label fx:id="oursTheFury" layoutX="620.0" layoutY="116.0" prefHeight="63.0" prefWidth="176.0" textAlignment="CENTER" />
       <Label fx:id="enemysTheFury" layoutX="225.0" layoutY="116.0" prefHeight="63.0" prefWidth="176.0" textAlignment="CENTER" />
       <Label fx:id="ourStoneGreen" layoutX="99.0" layoutY="461.0" prefHeight="41.0" prefWidth="40.0" styleClass="oursGreenStones" stylesheets="@styles.css" visible="false" />
