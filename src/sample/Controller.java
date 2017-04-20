@@ -44,17 +44,7 @@ public class Controller {
 
     public void start(MouseEvent e) {
         fillCells();
-        Image stone = new Image("sample/images/our_stone.png");
-        int num = 0;
-        int[] stones = Collocation.getCollocation().getAllStones();
-        for (int i:stones) {
-            System.out.println(i);
-            for (int j = 0; j < i; j++) {
-                cells[num].getChildren().add(new ImageView(stone));
-                System.out.println(cells[num].getId()+" id");
-            }
-            num++;
-        }
+        synhronize();
     }
 
     public void fillCells() {
@@ -75,6 +65,23 @@ public class Controller {
         cells[13] = enemysKalah;
     }
 
+    public void act(MouseEvent e){
+
+    }
+
+    public void synhronize(){
+        Image stone = new Image("sample/images/our_stone.png");
+        int num = 0;
+        int[] stones = Collocation.getCollocation().getAllStones();
+        for (int i:stones) {
+            System.out.println(i);
+            for (int j = 0; j < i; j++) {
+                cells[num].getChildren().add(new ImageView(stone));
+                System.out.println(cells[num].getId()+" id");
+            }
+            num++;
+        }
+    }
 
 
 }

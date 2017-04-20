@@ -39,9 +39,9 @@ public class SimpleCell extends Cell {
                     continue;
                 }
             }
-            if(buffer==1 && cell.getNext().player == this.player && cell.getNext() instanceof SimpleCell){
-                this.kalah.addStones(getStones());
-            }
+//            if(buffer==1 && cell.getNext().player == this.player && cell.getNext() instanceof SimpleCell){
+//                this.kalah.addStones(getStones());
+//            }
         }
         return false;
     }
