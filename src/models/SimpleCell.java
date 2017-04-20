@@ -45,4 +45,8 @@ public class SimpleCell extends Cell {
         }
         return false;
     }
+
+    public void setOpposite(Cell opposite) {
+        this.opposite = opposite;
+    }
 }

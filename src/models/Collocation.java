@@ -12,9 +12,9 @@ public class Collocation {
     Collocation(){
         cells = new Cell[14];
         for (int i = 0; i < 6; i++) {
-            cells[i] = new SimpleCell(true,i);
+            cells[i] = new SimpleCell(true,i+1);
             cells[i].stones=6;
-            cells[i+7] = new SimpleCell(false,i+8);
+            cells[i+7] = new SimpleCell(false,6-i);
             cells[i+7].stones=6;
         }
         cells[6] = new Kalah(true);
@@ -29,6 +29,11 @@ public class Collocation {
             }
             else cells[i].setNext(cells[i + 1]);
         }
+        for (int i = 0; i < 6; i++) {
+            if(cells[i] instanceof SimpleCell){
+                ((SimpleCell)cells[i]).setOpposite(cells[12-i]);
+            }
+        }
     }
 
     public static Collocation getCollocation(){
@@ -38,19 +43,13 @@ public class Collocation {
         return collocationForAll;
     }
 
-    public int[] getStones(){
+    public int[] getAllStones(){
         System.out.println("getStones");
         int i = 0;
         int[] stones = new int[14];
         for (Cell cell:cells) {
             stones[i] = cell.getStones();
-            System.out.println(Integer.toString(stones[i])+ " cell");
-        }
-        System.out.println("stoness");
-        System.out.println(Arrays.toString(stones));
-        for (Cell cell:cells) {
-            stones[i] = cell.getStones();
-            System.out.println(Integer.toString(stones[i])+ " cell");
+            i++;
         }
         return stones;
     }

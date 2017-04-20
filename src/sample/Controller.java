@@ -1,16 +1,13 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import models.Collocation;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Controller {
     @FXML
@@ -42,31 +39,42 @@ public class Controller {
     @FXML
     FlowPane enemysKalah;
 
-    FlowPane[] cells = {oneOurs,twoOurs,threeOurs,fourOurs,fiveOurs,sixOurs,oursKalah,oneEnemys,twoEnemys,threeEnemys,fourEnemys,fiveEnemys,sixEnemys,enemysKalah};
+    @FXML
+    private FlowPane[] cells;
 
-    public void paintStones(MouseEvent e){
-        System.out.println("ZZZZ");
-        Image image = new Image("sample/images/our_stone.png");
-        ImageView view = (ImageView) e.getSource();
-        view.setImage(image);
-        System.out.println("it works");
-    }
-
-    public void start(MouseEvent e){
+    public void start(MouseEvent e) {
+        fillCells();
         Image stone = new Image("sample/images/our_stone.png");
         int num = 0;
-        int[] stones = Collocation.getCollocation().getStones();
-        System.out.println(Arrays.toString(stones));
+        int[] stones = Collocation.getCollocation().getAllStones();
         for (int i:stones) {
             System.out.println(i);
             for (int j = 0; j < i; j++) {
-                //написать способ расположения камней
-
                 cells[num].getChildren().add(new ImageView(stone));
                 System.out.println(cells[num].getId()+" id");
             }
             num++;
         }
     }
+
+    public void fillCells() {
+        cells = new FlowPane[14];
+        cells[0] = oneOurs;
+        cells[1] = twoOurs;
+        cells[2] = threeOurs;
+        cells[3] = fourOurs;
+        cells[4] = fiveOurs;
+        cells[5] = sixOurs;
+        cells[6] = oursKalah;
+        cells[7] = oneEnemys;
+        cells[8] = twoEnemys;
+        cells[9] = threeEnemys;
+        cells[10] = fourEnemys;
+        cells[11] = fiveEnemys;
+        cells[12] = sixEnemys;
+        cells[13] = enemysKalah;
+    }
+
+
 
 }
