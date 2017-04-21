@@ -10,20 +10,20 @@
 
 <AnchorPane prefHeight="768.0" prefWidth="1030.0" snapToPixel="false" styleClass="pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <FlowPane fx:id="oneOurs" prefHeight="103.0" prefWidth="103.0" layoutX="169.0" layoutY="394.0" />
-      <FlowPane fx:id="twoOurs" prefHeight="103.0" prefWidth="103.0" layoutX="292.0" layoutY="394.0" />
-      <FlowPane fx:id="threeOurs" prefHeight="103.0" prefWidth="103.0" layoutX="410.0" layoutY="394.0" />
-      <FlowPane fx:id="fourOurs" prefHeight="103.0" prefWidth="103.0" layoutX="524.0" layoutY="394.0" />
-      <FlowPane fx:id="fiveOurs" prefHeight="103.0" prefWidth="103.0" layoutX="640.0" layoutY="394.0" />
-      <FlowPane fx:id="sixOurs" prefHeight="103.0" prefWidth="103.0" layoutX="760.0" layoutY="394.0" />
-      <FlowPane fx:id="sixEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="174.0" layoutY="243.0" />
-      <FlowPane fx:id="fiveEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="292.0" layoutY="243.0" />
-      <FlowPane fx:id="fourEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="404.0" layoutY="243.0" />
-      <FlowPane fx:id="threeEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="524.0" layoutY="243.0" />
-      <FlowPane fx:id="twoEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="640.0" layoutY="243.0" />
-      <FlowPane fx:id="oneEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="760.0" layoutY="244.0" />
-      <FlowPane fx:id="enemysKalah" prefHeight="207.0" prefWidth="116.0" layoutX="35.0" layoutY="243.0" />
-      <FlowPane fx:id="oursKalah" prefHeight="207.0" prefWidth="116.0" layoutX="881.0" layoutY="295.0" />
+      <FlowPane fx:id="oneOurs" prefHeight="103.0" prefWidth="103.0" layoutX="169.0" layoutY="394.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="twoOurs" prefHeight="103.0" prefWidth="103.0" layoutX="292.0" layoutY="394.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="threeOurs" prefHeight="103.0" prefWidth="103.0" layoutX="410.0" layoutY="394.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="fourOurs" prefHeight="103.0" prefWidth="103.0" layoutX="524.0" layoutY="394.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="fiveOurs" prefHeight="103.0" prefWidth="103.0" layoutX="640.0" layoutY="394.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="sixOurs" prefHeight="103.0" prefWidth="103.0" layoutX="760.0" layoutY="394.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="sixEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="174.0" layoutY="243.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="fiveEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="292.0" layoutY="243.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="fourEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="404.0" layoutY="243.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="threeEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="524.0" layoutY="243.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="twoEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="640.0" layoutY="243.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="oneEnemys" prefHeight="103.0" prefWidth="103.0" layoutX="760.0" layoutY="244.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="enemysKalah" prefHeight="207.0" prefWidth="116.0" layoutX="35.0" layoutY="243.0" onMouseClicked="#act"/>
+      <FlowPane fx:id="oursKalah" prefHeight="207.0" prefWidth="116.0" layoutX="881.0" layoutY="295.0" onMouseClicked="#act"/>
       <Label fx:id="whosTurnToGo" layoutX="410.0" layoutY="109.0" prefHeight="70.0" prefWidth="202.0" textAlignment="CENTER" onMouseClicked="#start"/>
       <Label fx:id="oursTheFury" layoutX="620.0" layoutY="116.0" prefHeight="63.0" prefWidth="176.0" textAlignment="CENTER" />
       <Label fx:id="enemysTheFury" layoutX="225.0" layoutY="116.0" prefHeight="63.0" prefWidth="176.0" textAlignment="CENTER" />

@@ -7,7 +7,7 @@ public class SimpleCell extends Cell {
     Cell opposite;
     int number;
 
-    SimpleCell(boolean player,int number){
+    SimpleCell(boolean player, int number) {
         super(player);
         this.number = number;
     }
@@ -16,33 +16,33 @@ public class SimpleCell extends Cell {
         return opposite;
     }
 
-    boolean act(){
+    public boolean act() {
         int buffer = stones;
         this.stones = 0;
         Cell cell = getNext();
-        while (buffer>0){
-            if(!(cell instanceof Kalah)){
-                cell.incrementStone();
-                buffer--;
-                cell = cell.getNext();
+        while (buffer>0) {
+            if(cell instanceof Kalah && cell.getPlayer()!=Collocation.getCollocation().getPlayer()){
+                cell=cell.getNext();
                 continue;
             }
-            else {
-                if(cell.player == this.player){
-                    if(buffer == 1){
-                        cell.incrementStone();
-                        return true;
-                    }
-                }
-                else{
-                    cell = cell.getNext();
-                    continue;
-                }
-            }
-//            if(buffer==1 && cell.getNext().player == this.player && cell.getNext() instanceof SimpleCell){
-//                this.kalah.addStones(getStones());
-//            }
+            cell.incrementStone();
+            if(buffer!=1)
+                cell = cell.getNext();
+            buffer--;
+
         }
+        System.out.println(cell.getClass());
+        System.out.println(cell.getPlayer());
+        if(cell instanceof Kalah && cell.getPlayer()==Collocation.getCollocation().getPlayer()) {
+            System.out.println("po4emu?");
+            return true;
+        }
+        if(cell instanceof SimpleCell && cell.getPlayer()==Collocation.getCollocation().getPlayer() && cell.getStones()-1==0){
+            buffer = ((SimpleCell) cell).getOpposite().stones;
+            ((SimpleCell) cell).getOpposite().stones = 0;
+            cell.kalah.addStones(buffer);
+        }
+        Collocation.getCollocation().invertPlayer();
         return false;
     }
 

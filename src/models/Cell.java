@@ -3,7 +3,7 @@ package models;
 /**
  * Created by TriplePi on 16.04.2017.
  */
-public class Cell {
+public class Cell implements Cloneable{
     int stones = 0;
     Cell next;
     Kalah kalah;
@@ -28,4 +28,9 @@ public class Cell {
     void setNext(Cell next){
         this.next = next;
     }
+
+    public boolean getPlayer(){
+        return player;
+    }
+
 }

@@ -1,11 +1,13 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import models.Collocation;
+import models.SimpleCell;
 
 import java.util.ArrayList;
 
@@ -65,19 +67,34 @@ public class Controller {
         cells[13] = enemysKalah;
     }
 
-    public void act(MouseEvent e){
+    public void act(MouseEvent e) {
+        FlowPane pane = (FlowPane) e.getSource();
+        if (!(pane.getId().equals("oursKalah") || pane.getId().equals("enemysKalah"))) {
+            int i = 0;
+            while (!cells[i].getId().equals(pane.getId()))
+                i++;
+            Collocation collocation = Collocation.getCollocation();
+            SimpleCell cell = ((SimpleCell) collocation.getCell(i));
+            if (cell.getPlayer()==collocation.getPlayer()) {
+                cell.act();
+            }
+        }
+        synhronize();
+        System.out.println(Collocation.getCollocation().getPlayer());
 
     }
 
-    public void synhronize(){
+    public void synhronize() {
         Image stone = new Image("sample/images/our_stone.png");
+        for (FlowPane pane : cells) {
+            pane.getChildren().clear();
+        }
         int num = 0;
         int[] stones = Collocation.getCollocation().getAllStones();
-        for (int i:stones) {
-            System.out.println(i);
+        for (int i : stones) {
             for (int j = 0; j < i; j++) {
-                cells[num].getChildren().add(new ImageView(stone));
-                System.out.println(cells[num].getId()+" id");
+                ImageView view =new ImageView(stone);
+                cells[num].getChildren().add(view);
             }
             num++;
         }
