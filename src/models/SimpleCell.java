@@ -31,10 +31,7 @@ public class SimpleCell extends Cell {
             buffer--;
 
         }
-        System.out.println(cell.getClass());
-        System.out.println(cell.getPlayer());
         if(cell instanceof Kalah && cell.getPlayer()==Collocation.getCollocation().getPlayer()) {
-            System.out.println("po4emu?");
             return true;
         }
         if(cell instanceof SimpleCell && cell.getPlayer()==Collocation.getCollocation().getPlayer() && cell.getStones()-1==0){

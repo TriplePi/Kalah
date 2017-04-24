@@ -35,13 +35,13 @@ public class Collocation {
                 else cells[i].kalah = (Kalah) cells[13];
             }
         }
-        int k = 0;
-        for (Cell cell : cells) {
-            System.out.println(k);
-            System.out.println(cell.getClass());
-            System.out.println(cell.getPlayer());
-            k++;
-        }
+//        int k = 0;
+//        for (Cell cell : cells) {
+//            System.out.println(k);
+//            System.out.println(cell.getClass());
+//            System.out.println(cell.getPlayer());
+//            k++;
+//        }
     }
 
     public Collocation(int[] stones) {

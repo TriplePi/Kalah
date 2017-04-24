@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import models.AI;
 import models.Collocation;
 import models.SimpleCell;
 
@@ -80,8 +81,9 @@ public class Controller {
             }
         }
         synhronize();
-        System.out.println(Collocation.getCollocation().getPlayer());
-
+        AI ai = new AI();
+        ai.colculate(Collocation.getCollocation());
+        System.out.println("That's all?");
     }
 
     public void synhronize() {
