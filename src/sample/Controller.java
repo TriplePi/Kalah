@@ -82,8 +82,13 @@ public class Controller {
         }
         synhronize();
         AI ai = new AI();
-        ai.colculate(Collocation.getCollocation());
-        System.out.println("That's all?");
+        Collocation.change(ai.calculate(Collocation.getCollocation()));
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
+        synhronize();
     }
 
     public void synhronize() {

@@ -10,6 +10,10 @@ public class Collocation {
     Cell[] cells;
     private static Collocation collocationForAll;
 
+    public static void change(Collocation collocation){
+        collocationForAll = collocation;
+    }
+
     private Collocation() {
         int num = 6;
         cells = new Cell[14];
@@ -30,9 +34,8 @@ public class Collocation {
         for (int i = 0; i < 6; i++) {
             if (cells[i] instanceof SimpleCell) {
                 ((SimpleCell) cells[i]).setOpposite(cells[12 - i]);
-                if (cells[i].getPlayer())
-                    cells[i].kalah = (Kalah) cells[6];
-                else cells[i].kalah = (Kalah) cells[13];
+                cells[i].kalah = (Kalah) cells[6];
+                cells[i+7].kalah = (Kalah) cells[13];
             }
         }
 //        int k = 0;
@@ -61,9 +64,9 @@ public class Collocation {
         for (int i = 0; i < 6; i++) {
             if (cells[i] instanceof SimpleCell) {
                 ((SimpleCell) cells[i]).setOpposite(cells[12 - i]);
-                if (cells[i].getPlayer())
-                    cells[i].kalah = (Kalah) cells[6];
-                else cells[i].kalah = (Kalah) cells[13];
+                ((SimpleCell) cells[12 - i]).setOpposite(cells[i]);
+                cells[i].kalah = (Kalah) cells[6];
+                cells[i + 7].kalah = (Kalah) cells[13];
             }
         }
         int k = 0;
