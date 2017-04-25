@@ -9,6 +9,7 @@ public class Kalah extends Cell{
     }
 
     void addStones(int a){
+
         this.stones+=a;
     }
 }

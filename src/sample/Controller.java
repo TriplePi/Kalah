@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -38,6 +39,11 @@ public class Controller {
     FlowPane oursKalah;
     @FXML
     FlowPane enemysKalah;
+
+    @FXML
+    Label oursTheFury;
+    @FXML
+    Label enemysTheFury;
 
     @FXML
     private FlowPane[] cells;
@@ -82,15 +88,19 @@ public class Controller {
                         AI ai = new AI();
                         System.out.println(Collocation.getCollocation().getPlayer());
                         Collocation.change(ai.calculate(Collocation.getCollocation()));
+
                         synchronize();
-                        if(Collocation.getCollocation().check()!=0) {
-                            System.out.println(Collocation.getCollocation().check()+"sovsem ahtung");
-                            return;
-                        }
+                        return;
+//                        if(Collocation.getCollocation().check()!=0) {
+//                            System.out.println(Collocation.getCollocation().check()+"sovsem ahtung");
+//                            return;
+//                        }
                     }
                 }
             }
         }
+        oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]));
+        enemysTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[13]));
         synchronize();
     }
 
