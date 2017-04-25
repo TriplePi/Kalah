@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -9,12 +10,14 @@ public class Collocation {
     boolean player = true;
     Cell[] cells;
     private static Collocation collocationForAll;
+    private static ArrayList<String> log;
 
     public static void change(Collocation collocation){
         collocationForAll = collocation;
     }
 
     private Collocation() {
+        log = new ArrayList<>();
         int num = 3;
         cells = new Cell[14];
         for (int i = 0; i < 6; i++) {
@@ -115,4 +118,15 @@ public class Collocation {
             return 2;
         return 0;
     }
+
+//    void addToLog(String s){
+//        log.add(s);
+//        log.add("\n");
+//    }
+//
+//    public ArrayList<String> getLog(){
+//        return log;
+//    }
+
+
 }

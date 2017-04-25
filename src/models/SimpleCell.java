@@ -40,6 +40,8 @@ public class SimpleCell extends Cell {
             cell.kalah.addStones(buffer);
         }
         collocation.invertPlayer();
+        if (collocation.getPlayer())
+            System.out.println("wtf");
         return false;
     }
 

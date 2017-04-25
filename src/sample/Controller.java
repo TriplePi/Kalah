@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -11,6 +12,7 @@ import models.Collocation;
 import models.SimpleCell;
 
 public class Controller {
+    public Label whosTurnToGo;
     @FXML
     FlowPane oneOurs;
     @FXML
@@ -45,6 +47,7 @@ public class Controller {
     @FXML
     Label enemysTheFury;
 
+
     @FXML
     private FlowPane[] cells;
 
@@ -72,7 +75,7 @@ public class Controller {
     }
 
     public void act(MouseEvent e) {
-        System.out.println("ahtung "+Collocation.getCollocation().getPlayer());
+        System.out.println("ahtung " + Collocation.getCollocation().getPlayer());
         FlowPane pane = (FlowPane) e.getSource();
         if (!(pane.getId().equals("oursKalah") || pane.getId().equals("enemysKalah"))) {
             int i = 0;
@@ -80,28 +83,20 @@ public class Controller {
                 i++;
             Collocation collocation = Collocation.getCollocation();
             SimpleCell cell = ((SimpleCell) collocation.getCell(i));
+            if (cell.getStones() == 0) {
+                return;
+            }
             if (cell.getPlayer() == collocation.getPlayer()) {
                 cell.act(Collocation.getCollocation());
                 if (!Collocation.getCollocation().getPlayer()) {
-
-                    while (!Collocation.getCollocation().getPlayer()) {
-                        AI ai = new AI();
-                        System.out.println(Collocation.getCollocation().getPlayer());
-                        Collocation.change(ai.calculate(Collocation.getCollocation()));
-
-                        synchronize();
-                        return;
-//                        if(Collocation.getCollocation().check()!=0) {
-//                            System.out.println(Collocation.getCollocation().check()+"sovsem ahtung");
-//                            return;
-//                        }
-                    }
+                    botAct();
                 }
             }
         }
-        oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]));
-        enemysTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[13]));
+        oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]) + "/36");
+        enemysTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[13]) + "/36");
         synchronize();
+        whosTurnToGo.setText(Boolean.toString(Collocation.getCollocation().getPlayer()));
     }
 
     public void synchronize() {
@@ -120,5 +115,15 @@ public class Controller {
         }
     }
 
-
+    void botAct() {
+        AI ai = new AI();
+        Collocation.change(ai.calculate(Collocation.getCollocation()));
+        synchronize();
+        if (Collocation.getCollocation().check() != 0 || !Collocation.getCollocation().getPlayer()) {
+            System.out.println(Collocation.getCollocation().check() + "sovsem ahtung");
+            botAct();
+        }
+    }
 }
+
+
