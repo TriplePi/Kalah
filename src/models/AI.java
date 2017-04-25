@@ -12,7 +12,7 @@ public class AI {
 
     Node root;
 
-    HashMap<Integer,Node> rates;
+    HashMap<Integer, Node> rates;
 
     class Node {
         Node father = null;
@@ -32,7 +32,7 @@ public class AI {
 
     }
 
-    public AI(){
+    public AI() {
         rates = new HashMap<>();
     }
 
@@ -43,38 +43,39 @@ public class AI {
         long t = System.currentTimeMillis();
         int deep = 5;
         createNodes(father, deep);
-        System.out.println(System.currentTimeMillis()-t);
+        System.out.println(System.currentTimeMillis() - t);
         node = rates.get(Collections.max(rates.keySet()));
-        System.out.println(Arrays.toString(node.collocation.getAllStones()));
-        for (int i = 0; i < deep-1; i++) {
+        //System.out.println(Arrays.toString(node.collocation.getAllStones()));
+        for (int i = 0; i < deep - 2; i++) {
             node = node.father;
         }
         return node.collocation;
-        //print(father);
-        //return null;
     }
 
     void createNodes(Node father, int count) {
-        Collocation clone = new Collocation(father.collocation.getAllStones());
-        boolean colour = clone.player;
-        if (count > 0)
+        Collocation clone = new Collocation(father.collocation);
+        Collocation collocation;
+        if(clone.check()==1 || clone.check()==2)
+            return;
+        if(clone.check()!=-1 && count > 0)
             for (int i = 0; i < 13; i++) {
-                if (!(clone.cells[i] instanceof Kalah) && clone.cells[i].getPlayer() == colour) {
-//                System.out.println("zahod2");
-                    father.addChild(new Collocation(clone.getAllStones()));
-                    ((SimpleCell) ((father.childs.get(father.childs.size() - 1)).collocation.cells[i])).act();
-                    createNodes(father.childs.get(father.childs.size()-1),count-1);
-//                System.out.println("check");
-//                System.out.println(node.childs.size());
-//                System.out.println(Arrays.toString(node.childs.get(node.childs.size() - 1).collocation.getAllStones()));
+                if (!(clone.cells[i] instanceof Kalah) && clone.cells[i].getPlayer() == clone.player) {
+                    collocation = new Collocation(clone);
+                    father.addChild(collocation);
+                    ((SimpleCell) collocation.cells[i]).act(collocation);
+                    createNodes(father.childs.get(father.childs.size() - 1), count - 1);
                 }
             }
-        else rates.put(father.collocation.getAllStones()[13]-father.collocation.getAllStones()[6],father);
+        else {
+            collocation = father.collocation;
+            if (collocation.getAllStones()[13] > collocation.getAllStones()[6])
+                rates.put(father.collocation.getAllStones()[13] - father.collocation.getAllStones()[6], father);
+        }
     }
 
     void print(Node node) {
-        System.out.println(Arrays.toString(node.collocation.getAllStones()));
-        System.out.println(node.childs.size());
+        //System.out.println(Arrays.toString(node.collocation.getAllStones()));
+        //System.out.println(node.childs.size());
         if (node.childs.size() != 0) {
             for (Node child : node.childs) {
                 print(child);

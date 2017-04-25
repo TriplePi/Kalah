@@ -15,7 +15,7 @@ public class Collocation {
     }
 
     private Collocation() {
-        int num = 6;
+        int num = 3;
         cells = new Cell[14];
         for (int i = 0; i < 6; i++) {
             cells[i] = new SimpleCell(true, i + 1);
@@ -47,7 +47,7 @@ public class Collocation {
 //        }
     }
 
-    public Collocation(int[] stones) {
+    public Collocation(Collocation collocation) {
         cells = new Cell[14];
         for (int i = 0; i < 6; i++) {
             cells[i] = new SimpleCell(true, i + 1);
@@ -71,9 +71,10 @@ public class Collocation {
         }
         int k = 0;
         for (Cell cell : cells) {
-            cell.stones = stones[k];
+            cell.stones = collocation.getAllStones()[k];
             k++;
         }
+        this.player = collocation.getPlayer();
     }
 
     public static Collocation getCollocation() {
@@ -103,5 +104,15 @@ public class Collocation {
 
     public void invertPlayer() {
         player = !player;
+    }
+
+    public int check(){
+        if(this.getAllStones()[13]>36)
+            return -1;
+        if(this.getAllStones()[6]>36)
+            return 1;
+        if(this.getAllStones()[13]==this.getAllStones()[6] && this.getAllStones()[6]==36)
+            return 2;
+        return 0;
     }
 }

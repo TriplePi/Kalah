@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -9,8 +8,6 @@ import javafx.scene.layout.FlowPane;
 import models.AI;
 import models.Collocation;
 import models.SimpleCell;
-
-import java.util.ArrayList;
 
 public class Controller {
     @FXML
@@ -47,7 +44,7 @@ public class Controller {
 
     public void start(MouseEvent e) {
         fillCells();
-        synhronize();
+        synchronize();
     }
 
     public void fillCells() {
@@ -69,6 +66,7 @@ public class Controller {
     }
 
     public void act(MouseEvent e) {
+        System.out.println("ahtung "+Collocation.getCollocation().getPlayer());
         FlowPane pane = (FlowPane) e.getSource();
         if (!(pane.getId().equals("oursKalah") || pane.getId().equals("enemysKalah"))) {
             int i = 0;
@@ -76,22 +74,27 @@ public class Controller {
                 i++;
             Collocation collocation = Collocation.getCollocation();
             SimpleCell cell = ((SimpleCell) collocation.getCell(i));
-            if (cell.getPlayer()==collocation.getPlayer()) {
-                cell.act();
+            if (cell.getPlayer() == collocation.getPlayer()) {
+                cell.act(Collocation.getCollocation());
+                if (!Collocation.getCollocation().getPlayer()) {
+
+                    while (!Collocation.getCollocation().getPlayer()) {
+                        AI ai = new AI();
+                        System.out.println(Collocation.getCollocation().getPlayer());
+                        Collocation.change(ai.calculate(Collocation.getCollocation()));
+                        synchronize();
+                        if(Collocation.getCollocation().check()!=0) {
+                            System.out.println(Collocation.getCollocation().check()+"sovsem ahtung");
+                            return;
+                        }
+                    }
+                }
             }
         }
-        synhronize();
-        AI ai = new AI();
-        Collocation.change(ai.calculate(Collocation.getCollocation()));
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e1) {
-            e1.printStackTrace();
-        }
-        synhronize();
+        synchronize();
     }
 
-    public void synhronize() {
+    public void synchronize() {
         Image stone = new Image("sample/images/our_stone.png");
         for (FlowPane pane : cells) {
             pane.getChildren().clear();
@@ -100,7 +103,7 @@ public class Controller {
         int[] stones = Collocation.getCollocation().getAllStones();
         for (int i : stones) {
             for (int j = 0; j < i; j++) {
-                ImageView view =new ImageView(stone);
+                ImageView view = new ImageView(stone);
                 cells[num].getChildren().add(view);
             }
             num++;
