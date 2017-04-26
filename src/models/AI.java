@@ -41,15 +41,17 @@ public class AI {
         this.root = father;
         Node node;
         long t = System.currentTimeMillis();
-        int deep = 5;
+        int deep = 7;
         createNodes(father, deep);
-        System.out.println(System.currentTimeMillis() - t);
+        //System.out.println(System.currentTimeMillis() - t);
         node = rates.get(Collections.max(rates.keySet()));
         //System.out.println(Arrays.toString(node.collocation.getAllStones()));
-        for (int i = 0; i < deep - 2; i++) {
+        for (int i = 0; i < deep - 1; i++) {
             node = node.father;
         }
+        if(node.collocation!=null)
         return node.collocation;
+        else return Collocation.getCollocation();
     }
 
     void createNodes(Node father, int count) {
@@ -59,7 +61,7 @@ public class AI {
             return;
         if(clone.check()!=-1 && count > 0)
             for (int i = 0; i < 13; i++) {
-                if (!(clone.cells[i] instanceof Kalah) && clone.cells[i].getPlayer() == clone.player) {
+                if (!(clone.cells[i] instanceof Kalah) && clone.cells[i].getPlayer() == clone.player && clone.cells[i].getStones()!= 0) {
                     collocation = new Collocation(clone);
                     father.addChild(collocation);
                     ((SimpleCell) collocation.cells[i]).act(collocation);

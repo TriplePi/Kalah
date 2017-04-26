@@ -1,61 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1030.0" snapToPixel="false" styleClass="pane" stylesheets="@styles.css"
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="768.0" prefWidth="1030.0" snapToPixel="false" styleClass="pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <FlowPane fx:id="oneOurs" layoutX="176.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="96.0"/>
-        <FlowPane fx:id="twoOurs" layoutX="292.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="96.0"/>
-        <FlowPane fx:id="threeOurs" layoutX="410.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="96.0"/>
-        <FlowPane fx:id="fourOurs" layoutX="531.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="96.0"/>
-        <FlowPane fx:id="fiveOurs" layoutX="647.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="96.0"/>
-        <FlowPane fx:id="sixOurs" layoutX="760.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="103.0"/>
-        <FlowPane fx:id="sixEnemys" layoutX="174.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="96.0"/>
-        <FlowPane fx:id="fiveEnemys" layoutX="292.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="96.0"/>
-        <FlowPane fx:id="fourEnemys" layoutX="404.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="110.0"/>
-        <FlowPane fx:id="threeEnemys" layoutX="524.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="103.0"/>
-        <FlowPane fx:id="twoEnemys" layoutX="640.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="103.0"/>
-        <FlowPane fx:id="oneEnemys" layoutX="760.0" layoutY="244.0" onMouseClicked="#act" prefHeight="103.0"
-                  prefWidth="103.0"/>
-        <FlowPane fx:id="enemysKalah" layoutX="41.0" layoutY="256.0" onMouseClicked="#act" prefHeight="172.0"
-                  prefWidth="110.0"/>
-        <FlowPane fx:id="oursKalah" layoutX="887.0" layoutY="310.0" onMouseClicked="#act" prefHeight="180.0"
-                  prefWidth="110.0"/>
-        <Label fx:id="whosTurnToGo" layoutX="410.0" layoutY="109.0" onMouseClicked="#start" prefHeight="70.0"
-               prefWidth="202.0" textAlignment="CENTER"/>
-        <Label fx:id="oursTheFury" layoutX="620.0" layoutY="116.0" prefHeight="63.0" prefWidth="176.0"
-               textAlignment="CENTER">
+        <FlowPane fx:id="oneOurs" layoutX="176.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="twoOurs" layoutX="294.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="threeOurs" layoutX="412.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="fourOurs" layoutX="528.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="fiveOurs" layoutX="646.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="sixOurs" layoutX="764.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="sixEnemys" layoutX="174.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="fiveEnemys" layoutX="292.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="fourEnemys" layoutX="404.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="threeEnemys" layoutX="524.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="twoEnemys" layoutX="640.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="oneEnemys" layoutX="760.0" layoutY="244.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
+        <FlowPane fx:id="enemysKalah" layoutX="41.0" layoutY="256.0" onMouseClicked="#act" prefHeight="172.0" prefWidth="110.0" />
+        <FlowPane fx:id="oursKalah" layoutX="887.0" layoutY="310.0" onMouseClicked="#act" prefHeight="180.0" prefWidth="110.0" />
+        <Label fx:id="whosTurnToGo" alignment="CENTER" contentDisplay="CENTER" layoutX="410.0" layoutY="94.0" onMouseClicked="#start" prefHeight="70.0" prefWidth="202.0" text="touch me" textAlignment="CENTER" textFill="#5e2803">
+         <font>
+            <Font name="Comic Sans MS" size="33.0" />
+         </font></Label>
+        <Label fx:id="oursTheFury" alignment="CENTER" contentDisplay="CENTER" layoutX="627.0" layoutY="96.0" prefHeight="26.0" prefWidth="176.0" textAlignment="CENTER" textFill="#0fe024">
             <font>
-                <Font name="Comic Sans MS Italic" size="48.0"/>
+                <Font name="Comic Sans MS Italic" size="48.0" />
             </font>
         </Label>
-        <Label fx:id="enemysTheFury" layoutX="225.0" layoutY="116.0" prefHeight="63.0" prefWidth="176.0"
-               textAlignment="CENTER">
+        <Label fx:id="enemysTheFury" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="96.0" prefHeight="67.0" prefWidth="176.0" textAlignment="CENTER" textFill="#0fe024">
             <font>
-                <Font name="Comic Sans MS Italic" size="48.0"/>
+                <Font name="Comic Sans MS Italic" size="48.0" />
             </font>
         </Label>
-        <Label fx:id="ourStoneGreen" layoutX="99.0" layoutY="461.0" prefHeight="41.0" prefWidth="40.0"
-               styleClass="oursGreenStones" stylesheets="@styles.css" visible="false"/>
-        <Label fx:id="enemyStoneRed" layoutX="881.0" layoutY="234.0" prefHeight="41.0" prefWidth="40.0"
-               styleClass="enemysRedStones" stylesheets="@styles.css" visible="false"/>
+        <Label fx:id="ourStoneGreen" layoutX="99.0" layoutY="461.0" prefHeight="41.0" prefWidth="40.0" styleClass="oursGreenStones" stylesheets="@styles.css" visible="false" />
+        <Label fx:id="enemyStoneRed" layoutX="881.0" layoutY="234.0" prefHeight="41.0" prefWidth="40.0" styleClass="enemysRedStones" stylesheets="@styles.css" visible="false" />
     </children>
 </AnchorPane>

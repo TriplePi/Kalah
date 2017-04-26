@@ -11,6 +11,8 @@ import models.AI;
 import models.Collocation;
 import models.SimpleCell;
 
+import java.util.Arrays;
+
 public class Controller {
     public Label whosTurnToGo;
     @FXML
@@ -47,9 +49,10 @@ public class Controller {
     @FXML
     Label enemysTheFury;
 
-
+    boolean firstMove = true;
     @FXML
     private FlowPane[] cells;
+
 
     public void start(MouseEvent e) {
         fillCells();
@@ -75,28 +78,19 @@ public class Controller {
     }
 
     public void act(MouseEvent e) {
-        System.out.println("ahtung " + Collocation.getCollocation().getPlayer());
-        FlowPane pane = (FlowPane) e.getSource();
-        if (!(pane.getId().equals("oursKalah") || pane.getId().equals("enemysKalah"))) {
-            int i = 0;
-            while (!cells[i].getId().equals(pane.getId()))
-                i++;
-            Collocation collocation = Collocation.getCollocation();
-            SimpleCell cell = ((SimpleCell) collocation.getCell(i));
-            if (cell.getStones() == 0) {
-                return;
+        //System.out.println("ahtung " + Collocation.getCollocation().getPlayer());
+        if (Collocation.getCollocation().getPlayer())
+            playerAct((FlowPane) e.getSource());
+        else
+            do {
+                botAct();
             }
-            if (cell.getPlayer() == collocation.getPlayer()) {
-                cell.act(Collocation.getCollocation());
-                if (!Collocation.getCollocation().getPlayer()) {
-                    botAct();
-                }
-            }
-        }
+            while (!Collocation.getCollocation().getPlayer() && Collocation.getCollocation().check() == 0);
         oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]) + "/36");
         enemysTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[13]) + "/36");
-        synchronize();
-        whosTurnToGo.setText(Boolean.toString(Collocation.getCollocation().getPlayer()));
+        if(Collocation.getCollocation().getPlayer())
+        whosTurnToGo.setText("Ваш ход");
+        else whosTurnToGo.setText("Чужой");
     }
 
     public void synchronize() {
@@ -116,13 +110,43 @@ public class Controller {
     }
 
     void botAct() {
+        System.out.println("botAct");
         AI ai = new AI();
-        Collocation.change(ai.calculate(Collocation.getCollocation()));
+        Collocation.change(new Collocation(ai.calculate(Collocation.getCollocation())));
+        System.out.println(Collocation.getCollocation().getPlayer());
+        if (!Collocation.getCollocation().getPlayer())
+            System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
         synchronize();
-        if (Collocation.getCollocation().check() != 0 || !Collocation.getCollocation().getPlayer()) {
-            System.out.println(Collocation.getCollocation().check() + "sovsem ahtung");
-            botAct();
+//        if (Collocation.getCollocation().check() != 0 ||
+//                (!Collocation.getCollocation().getPlayer() && Collocation.getCollocation().getPlayer()==Collocation.getCollocation().getPreviosPlayer())) {
+//            System.out.println(Collocation.getCollocation().check() + "sovsem ahtung");
+//            botAct();
+//        }
+    }
+
+    void playerAct(FlowPane pane) {
+        if (!(pane.getId().equals("oursKalah") || pane.getId().equals("enemysKalah"))) {
+            if((firstMove && pane.getId().equals("oneOurs"))) {
+                return;
+            }
+            firstMove = false;
+            int i = 0;
+            while (!cells[i].getId().equals(pane.getId()))
+                i++;
+            Collocation collocation = Collocation.getCollocation();
+            SimpleCell cell = ((SimpleCell) collocation.getCell(i));
+            if (cell.getStones() == 0) {
+                return;
+            }
+            if (cell.getPlayer() == collocation.getPlayer()) {
+                cell.act(Collocation.getCollocation());
+                synchronize();
+                if (!Collocation.getCollocation().getPlayer()) {
+                    botAct();
+                }
+            }
         }
+        synchronize();
     }
 }
 

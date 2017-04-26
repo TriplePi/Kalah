@@ -7,6 +7,7 @@ import java.util.Arrays;
  * Created by Дарья on 20.04.2017.
  */
 public class Collocation {
+    boolean previousPlayer = true;
     boolean player = true;
     Cell[] cells;
     private static Collocation collocationForAll;
@@ -18,12 +19,12 @@ public class Collocation {
 
     private Collocation() {
         log = new ArrayList<>();
-        int num = 3;
+        int num = 6;
         cells = new Cell[14];
         for (int i = 0; i < 6; i++) {
-            cells[i] = new SimpleCell(true, i + 1);
+            cells[i] = new SimpleCell(true, i );
             cells[i].stones = num;
-            cells[i + 7] = new SimpleCell(false, 6 - i);
+            cells[i + 7] = new SimpleCell(false, i+7);
             cells[i + 7].stones = num;
         }
         cells[6] = new Kalah(true);
@@ -34,13 +35,21 @@ public class Collocation {
                 cells[13].setNext(cells[0]);
             } else cells[i].setNext(cells[i + 1]);
         }
+        System.out.println(Arrays.toString(getAllStones()));
         for (int i = 0; i < 6; i++) {
             if (cells[i] instanceof SimpleCell) {
-                ((SimpleCell) cells[i]).setOpposite(cells[12 - i]);
+                ((SimpleCell) cells[i]).setOpposite((SimpleCell) cells[12 - i]);
                 cells[i].kalah = (Kalah) cells[6];
                 cells[i+7].kalah = (Kalah) cells[13];
             }
         }
+
+//        for (Cell cell:cells) {
+//            if(cell instanceof SimpleCell) {
+//                System.out.print(((SimpleCell) cell).getNumber());
+//                System.out.println(((SimpleCell) ((SimpleCell) cell).getOpposite()).getNumber());
+//            }
+//        }
 //        int k = 0;
 //        for (Cell cell : cells) {
 //            System.out.println(k);
@@ -66,8 +75,8 @@ public class Collocation {
         }
         for (int i = 0; i < 6; i++) {
             if (cells[i] instanceof SimpleCell) {
-                ((SimpleCell) cells[i]).setOpposite(cells[12 - i]);
-                ((SimpleCell) cells[12 - i]).setOpposite(cells[i]);
+                ((SimpleCell) cells[i]).setOpposite((SimpleCell) cells[12 - i]);
+                ((SimpleCell) cells[12 - i]).setOpposite((SimpleCell) cells[i]);
                 cells[i].kalah = (Kalah) cells[6];
                 cells[i + 7].kalah = (Kalah) cells[13];
             }
@@ -105,16 +114,31 @@ public class Collocation {
         return player;
     }
 
+    public boolean getPreviosPlayer(){
+        return previousPlayer;
+    }
+
     public void invertPlayer() {
-        player = !player;
+        previousPlayer = player;
+        this.player = !player;
     }
 
     public int check(){
-        if(this.getAllStones()[13]>36)
+        int[] stones = this.getAllStones();
+        int tCount =0;
+        int fCount = 0;
+        for (int i = 0; i < 14; i++) {
+            if(i!= 6 && i!=13){
+                if(i<7)
+                    tCount+=stones[i];
+                else fCount+=stones[i];
+            }
+        }
+        if(stones[13]>36)
             return -1;
-        if(this.getAllStones()[6]>36)
+        if(stones[6]>36)
             return 1;
-        if(this.getAllStones()[13]==this.getAllStones()[6] && this.getAllStones()[6]==36)
+        if(stones[13]==stones[6] && stones[6]==36)
             return 2;
         return 0;
     }

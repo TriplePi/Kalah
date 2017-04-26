@@ -4,7 +4,7 @@ package models;
  * Created by TriplePi on 16.04.2017.
  */
 public class SimpleCell extends Cell {
-    Cell opposite;
+    SimpleCell opposite;
     int number;
 
     SimpleCell(boolean player, int number) {
@@ -40,12 +40,17 @@ public class SimpleCell extends Cell {
             cell.kalah.addStones(buffer);
         }
         collocation.invertPlayer();
-        if (collocation.getPlayer())
-            System.out.println("wtf");
+//        if (collocation.getPlayer())
+//            System.out.println("wtf");
         return false;
     }
 
-    public void setOpposite(Cell opposite) {
+    public void setOpposite(SimpleCell opposite) {
         this.opposite = opposite;
+        opposite.opposite = this;
+    }
+
+    int getNumber(){
+        return number;
     }
 }
