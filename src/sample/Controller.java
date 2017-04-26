@@ -48,6 +48,8 @@ public class Controller {
     Label oursTheFury;
     @FXML
     Label enemysTheFury;
+    @FXML
+    Label forSomeText;
 
     boolean firstMove = true;
     @FXML
@@ -91,6 +93,17 @@ public class Controller {
         if(Collocation.getCollocation().getPlayer())
         whosTurnToGo.setText("Ваш ход");
         else whosTurnToGo.setText("Чужой");
+
+        switch (Collocation.getCollocation().check()) {
+            case -1: forSomeText.setText("Чужой победил");
+            break;
+            case 1: forSomeText.setText("Вы победили");
+            break;
+            case 2: forSomeText.setText("Ничья");
+            break;
+
+        }
+
     }
 
     public void synchronize() {
