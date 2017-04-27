@@ -15,6 +15,19 @@ import java.util.Arrays;
 
 public class Controller {
     public Label whosTurnToGo;
+
+    public Label countForOneOurs;
+    public Label countForTwoOurs;
+    public Label countForThreeOurs;
+    public Label countForFourOurs;
+    public Label countForFiveOurs;
+    public Label countForSixOurs;
+    public Label countForOneEnemys;
+    public Label countForTwoEnemys;
+    public Label countForThreeEnemys;
+    public Label countForFourEnemys;
+    public Label countForFiveEnemys;
+    public Label countForSixEnemys;
     @FXML
     FlowPane oneOurs;
     @FXML
@@ -51,10 +64,10 @@ public class Controller {
     @FXML
     Label forSomeText;
 
-    boolean firstMove = true;
-    @FXML
-    private FlowPane[] cells;
 
+    boolean firstMove = true;
+    private FlowPane[] cells;
+    private Label[] labels;
 
     public void start(MouseEvent e) {
         fillCells();
@@ -77,6 +90,20 @@ public class Controller {
         cells[11] = fiveEnemys;
         cells[12] = sixEnemys;
         cells[13] = enemysKalah;
+
+        labels = new Label[12];
+        labels[0] = countForOneOurs;
+        labels[1] = countForTwoOurs;
+        labels[2] = countForThreeOurs;
+        labels[3] = countForFourOurs;
+        labels[4] = countForFiveOurs;
+        labels[5] = countForSixOurs;
+        labels[6] = countForSixEnemys;
+        labels[7] = countForFiveEnemys;
+        labels[8] = countForFourEnemys;
+        labels[9] = countForThreeEnemys;
+        labels[10] = countForTwoEnemys;
+        labels[11] = countForOneEnemys;
     }
 
     public void act(MouseEvent e) {
@@ -90,21 +117,25 @@ public class Controller {
             while (!Collocation.getCollocation().getPlayer() && Collocation.getCollocation().check() == 0);
         oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]) + "/36");
         enemysTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[13]) + "/36");
-        if(Collocation.getCollocation().getPlayer())
-        whosTurnToGo.setText("Ваш ход");
+        if (Collocation.getCollocation().getPlayer())
+            whosTurnToGo.setText("Ваш ход");
         else whosTurnToGo.setText("Чужой");
 
         switch (Collocation.getCollocation().check()) {
-            case -1: forSomeText.setText("Чужой победил");
-            break;
-            case 1: forSomeText.setText("Вы победили");
-            break;
-            case 2: forSomeText.setText("Ничья");
-            break;
+            case -1:
+                forSomeText.setText("Чужой победил");
+                break;
+            case 1:
+                forSomeText.setText("Вы победили");
+                break;
+            case 2:
+                forSomeText.setText("Ничья");
+                break;
 
         }
 
     }
+
 
     public void synchronize() {
         Image stone = new Image("sample/images/our_stone.png");
@@ -118,8 +149,14 @@ public class Controller {
                 ImageView view = new ImageView(stone);
                 cells[num].getChildren().add(view);
             }
+            if (num != 6 && num !=13)
+                if (num < 7)
+                    labels[num].setText(Integer.toString(i));
+                else
+                    labels[num - 1].setText(Integer.toString(i));
             num++;
         }
+
     }
 
     void botAct() {
@@ -139,7 +176,7 @@ public class Controller {
 
     void playerAct(FlowPane pane) {
         if (!(pane.getId().equals("oursKalah") || pane.getId().equals("enemysKalah"))) {
-            if((firstMove && pane.getId().equals("oneOurs"))) {
+            if ((firstMove && pane.getId().equals("oneOurs"))) {
                 return;
             }
             firstMove = false;
