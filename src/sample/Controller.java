@@ -127,6 +127,7 @@ public class Controller {
         AI ai = new AI();
         Collocation.change(new Collocation(ai.calculate(Collocation.getCollocation())));
         System.out.println(Collocation.getCollocation().getPlayer());
+        System.out.println(Collocation.getCollocation().check());
         if (!Collocation.getCollocation().getPlayer())
             System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
         synchronize();
