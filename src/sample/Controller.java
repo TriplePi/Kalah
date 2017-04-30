@@ -159,6 +159,8 @@ public class Controller {
 
     }
 
+
+
     void botAct() {
         System.out.println("botAct");
         AI ai = new AI();
