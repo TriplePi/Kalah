@@ -129,7 +129,7 @@ public class Collocation {
         int fCount = 0;
         for (int i = 0; i < 14; i++) {
             if(i!= 6 && i!=13){
-                if(i<7)
+                if(i<6)
                     tCount+=stones[i];
                 else fCount+=stones[i];
             }
