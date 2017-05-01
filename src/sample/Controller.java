@@ -16,18 +16,31 @@ import java.util.Arrays;
 public class Controller {
     public Label whosTurnToGo;
 
-    public Label countForOneOurs;
-    public Label countForTwoOurs;
-    public Label countForThreeOurs;
-    public Label countForFourOurs;
-    public Label countForFiveOurs;
-    public Label countForSixOurs;
-    public Label countForOneEnemys;
-    public Label countForTwoEnemys;
-    public Label countForThreeEnemys;
-    public Label countForFourEnemys;
-    public Label countForFiveEnemys;
-    public Label countForSixEnemys;
+    @FXML
+    Label countForOneOurs;
+    @FXML
+    Label countForTwoOurs;
+    @FXML
+    Label countForThreeOurs;
+    @FXML
+    Label countForFourOurs;
+    @FXML
+    Label countForFiveOurs;
+    @FXML
+    Label countForSixOurs;
+    @FXML
+    Label countForOneEnemys;
+    @FXML
+    Label countForTwoEnemys;
+    @FXML
+    Label countForThreeEnemys;
+    @FXML
+    Label countForFourEnemys;
+    @FXML
+    Label countForFiveEnemys;
+    @FXML
+    Label countForSixEnemys;
+
     @FXML
     FlowPane oneOurs;
     @FXML
