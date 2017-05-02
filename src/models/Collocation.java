@@ -122,7 +122,7 @@ public class Collocation {
         previousPlayer = player;
         this.player = !player;
     }
-
+    // проверка на выигрыш/проигрыш/ничью
     public int check(){
         int[] stones = this.getAllStones();
         int tCount =0;

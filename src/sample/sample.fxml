@@ -19,27 +19,41 @@
         <FlowPane fx:id="threeEnemys" layoutX="528.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
         <FlowPane fx:id="twoEnemys" layoutX="646.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
         <FlowPane fx:id="oneEnemys" layoutX="764.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
-        <FlowPane fx:id="enemysKalah" layoutX="41.0" layoutY="263.0" onMouseClicked="#act" prefHeight="165.0" prefWidth="103.0" />
-        <FlowPane fx:id="oursKalah" layoutX="886.0" layoutY="318.0" onMouseClicked="#act" prefHeight="172.0" prefWidth="103.0" />
+        <FlowPane fx:id="enemysKalah" layoutX="46.0" layoutY="264.0" onMouseClicked="#act" prefHeight="165.0" prefWidth="103.0" />
+        <FlowPane fx:id="oursKalah" layoutX="895.0" layoutY="317.0" onMouseClicked="#act" prefHeight="165.0" prefWidth="103.0" />
         <Label fx:id="whosTurnToGo" alignment="CENTER" contentDisplay="CENTER" layoutX="410.0" layoutY="94.0" onMouseClicked="#start" prefHeight="70.0" prefWidth="202.0" text="touch me" textAlignment="CENTER" textFill="#5e2803">
-         <font>
-            <Font name="Comic Sans MS" size="33.0" />
-         </font></Label>
-        <Label fx:id="oursTheFury" alignment="CENTER" contentDisplay="CENTER" layoutX="627.0" layoutY="96.0" prefHeight="26.0" prefWidth="176.0" textAlignment="CENTER" textFill="#0fe024">
+            <font>
+                <Font name="Comic Sans MS" size="33.0" />
+            </font>
+        </Label>
+        <Label fx:id="oursTheFury" alignment="CENTER" contentDisplay="CENTER" layoutX="627.0" layoutY="100.0" prefHeight="26.0" prefWidth="176.0" textAlignment="CENTER" textFill="#0fe024">
             <font>
                 <Font name="Comic Sans MS Italic" size="48.0" />
             </font>
         </Label>
-        <Label fx:id="enemysTheFury" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="96.0" prefHeight="67.0" prefWidth="176.0" textAlignment="CENTER" textFill="#0fe024">
+        <Label fx:id="enemysTheFury" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="100.0" prefHeight="67.0" prefWidth="176.0" textAlignment="CENTER" textFill="#0fe024">
             <font>
                 <Font name="Comic Sans MS Italic" size="48.0" />
             </font>
         </Label>
-      <Label fx:id="forSomeText" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="636.0" prefHeight="126.0" prefWidth="649.0" text="look at me" textAlignment="CENTER" textFill="#5e2803">
-         <font>
-            <Font name="Comic Sans MS" size="34.0" />
-         </font>
-      </Label>
-      <Label fx:id="anek" onMouseClicked="#showAnek" layoutX="7.0" prefHeight="116.0" prefWidth="103.0" text="Label" />
+        <Label fx:id="ourStoneGreen" layoutX="99.0" layoutY="461.0" prefHeight="41.0" prefWidth="40.0" styleClass="oursGreenStones" stylesheets="@styles.css" visible="false" />
+        <Label fx:id="enemyStoneRed" layoutX="881.0" layoutY="234.0" prefHeight="41.0" prefWidth="40.0" styleClass="enemysRedStones" stylesheets="@styles.css" visible="false" />
+        <Label fx:id="forSomeText" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="659.0" prefHeight="103.0" prefWidth="524.0" text="look at me" textAlignment="CENTER" textFill="#5e2803">
+            <font>
+                <Font name="Comic Sans MS" size="34.0" />
+            </font>
+        </Label>
+        <Label fx:id="countForOneOurs" layoutX="202.0" layoutY="484.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
+        <Label fx:id="countForTwoOurs" layoutX="320.0" layoutY="484.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
+        <Label fx:id="countForThreeOurs" layoutX="438.0" layoutY="484.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
+        <Label fx:id="countForFourOurs" layoutX="556.0" layoutY="484.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
+        <Label fx:id="countForFiveOurs" layoutX="674.0" layoutY="484.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
+        <Label fx:id="countForSixOurs" layoutX="792.0" layoutY="484.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
+        <Label fx:id="countForOneEnemys" layoutX="202.0" layoutY="207.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
+        <Label fx:id="countForTwoEnemys" layoutX="320.0" layoutY="207.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
+        <Label fx:id="countForThreeEnemys" layoutX="438.0" layoutY="207.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
+        <Label fx:id="countForFourEnemys" layoutX="556.0" layoutY="207.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
+        <Label fx:id="countForFiveEnemys" layoutX="674.0" layoutY="207.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
+        <Label fx:id="countForSixEnemys" layoutX="792.0" layoutY="207.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
     </children>
 </AnchorPane>

@@ -13,9 +13,11 @@
 
  }
 
- .enemysRedStones {
-     -fx-background-image: url(images/enemy_stone.png);
-     -fx-background-repeat: stretch;
-     -fx-background-size: 41 40;
-     -fx-background-position: center center;
+ .forTextCounts {
+    -fx-font-size: 15pt;
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #FEED85;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-content-display: center;
  }

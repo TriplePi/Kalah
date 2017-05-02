@@ -8,7 +8,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import models.AI;
-import models.Anek;
 import models.Collocation;
 import models.SimpleCell;
 
@@ -16,21 +15,60 @@ import java.util.Arrays;
 
 public class Controller {
     public Label whosTurnToGo;
-    public FlowPane oneOurs;
-    public FlowPane twoOurs;
-    public FlowPane threeOurs;
-    public FlowPane fourOurs;
-    public FlowPane fiveOurs;
-    public FlowPane sixOurs;
-    public FlowPane oneEnemys;
-    public FlowPane twoEnemys;
-    public FlowPane threeEnemys;
-    public FlowPane fourEnemys;
-    public FlowPane fiveEnemys;
-    public FlowPane sixEnemys;
-    public FlowPane oursKalah;
-    public FlowPane enemysKalah;
-    public Label anek;
+
+    @FXML
+    Label countForOneOurs;
+    @FXML
+    Label countForTwoOurs;
+    @FXML
+    Label countForThreeOurs;
+    @FXML
+    Label countForFourOurs;
+    @FXML
+    Label countForFiveOurs;
+    @FXML
+    Label countForSixOurs;
+    @FXML
+    Label countForOneEnemys;
+    @FXML
+    Label countForTwoEnemys;
+    @FXML
+    Label countForThreeEnemys;
+    @FXML
+    Label countForFourEnemys;
+    @FXML
+    Label countForFiveEnemys;
+    @FXML
+    Label countForSixEnemys;
+
+    @FXML
+    FlowPane oneOurs;
+    @FXML
+    FlowPane twoOurs;
+    @FXML
+    FlowPane threeOurs;
+    @FXML
+    FlowPane fourOurs;
+    @FXML
+    FlowPane fiveOurs;
+    @FXML
+    FlowPane sixOurs;
+    @FXML
+    FlowPane oneEnemys;
+    @FXML
+    FlowPane twoEnemys;
+    @FXML
+    FlowPane threeEnemys;
+    @FXML
+    FlowPane fourEnemys;
+    @FXML
+    FlowPane fiveEnemys;
+    @FXML
+    FlowPane sixEnemys;
+    @FXML
+    FlowPane oursKalah;
+    @FXML
+    FlowPane enemysKalah;
 
     @FXML
     Label oursTheFury;
@@ -39,11 +77,12 @@ public class Controller {
     @FXML
     Label forSomeText;
 
+
     boolean firstMove = true;
     boolean playable = true;
     @FXML
     private FlowPane[] cells;
-
+    private Label[] labels;
 
     public void start(MouseEvent e) {
         fillCells();
@@ -66,6 +105,20 @@ public class Controller {
         cells[11] = fiveEnemys;
         cells[12] = sixEnemys;
         cells[13] = enemysKalah;
+
+        labels = new Label[12];
+        labels[0] = countForOneOurs;
+        labels[1] = countForTwoOurs;
+        labels[2] = countForThreeOurs;
+        labels[3] = countForFourOurs;
+        labels[4] = countForFiveOurs;
+        labels[5] = countForSixOurs;
+        labels[6] = countForSixEnemys;
+        labels[7] = countForFiveEnemys;
+        labels[8] = countForFourEnemys;
+        labels[9] = countForThreeEnemys;
+        labels[10] = countForTwoEnemys;
+        labels[11] = countForOneEnemys;
     }
 
     public void act(MouseEvent e) {
@@ -87,6 +140,19 @@ public class Controller {
             if (Collocation.getCollocation().getPlayer())
                 whosTurnToGo.setText("Ваш ход");
             else whosTurnToGo.setText("Чужой");
+        //System.out.println("ahtung " + Collocation.getCollocation().getPlayer());
+        if (Collocation.getCollocation().getPlayer())
+            playerAct((FlowPane) e.getSource());
+        else
+            do {
+                botAct();
+            }
+            while (!Collocation.getCollocation().getPlayer() && Collocation.getCollocation().check() == 0);
+        oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]) + "/36");
+        enemysTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[13]) + "/36");
+        if (Collocation.getCollocation().getPlayer())
+            whosTurnToGo.setText("Ваш ход");
+        else whosTurnToGo.setText("Чужой");
 
             switch (Collocation.getCollocation().check()) {
                 case -1:
@@ -99,9 +165,10 @@ public class Controller {
                     forSomeText.setText("Ничья");
                     break;
 
-            }
         }
-    }
+
+    }}
+
 
     public void synchronize() {
         Image stone = new Image("sample/images/our_stone.png");
@@ -115,11 +182,18 @@ public class Controller {
                 ImageView view = new ImageView(stone);
                 cells[num].getChildren().add(view);
             }
+            if (num != 6 && num !=13)
+                if (num < 7)
+                    labels[num].setText(Integer.toString(i));
+                else
+                    labels[num - 1].setText(Integer.toString(i));
             num++;
         }
         if(Collocation.getCollocation().check()!=0)
             playable=false;
     }
+
+
 
     void botAct() {
         System.out.println("botAct");
