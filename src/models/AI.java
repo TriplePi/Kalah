@@ -1,9 +1,6 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * Created by Ноутбук on 21.04.2017.
@@ -11,7 +8,6 @@ import java.util.HashMap;
 public class AI {
 
     Node root;
-
     HashMap<Integer, Node> rates;
 
     class Node {
@@ -44,29 +40,51 @@ public class AI {
         int deep = 7;
         createNodes(father, deep);
         //System.out.println(System.currentTimeMillis() - t);
-        if(rates.size()==0){
+        if (rates.size() == 0) {
+            System.out.println("                                                              rates");
             return Collocation.getCollocation();
         }
         node = rates.get(Collections.max(rates.keySet()));
         //System.out.println(Arrays.toString(node.collocation.getAllStones()));
         for (int i = 0; i < deep - 1; i++) {
-            node = node.father;
+            if (node.father != null)
+                node = node.father;
         }
-        if (node == null)
+        if (Arrays.equals(collocation.getAllStones(), node.collocation.getAllStones())) {
+            System.out.println("                                                            wtf");
+            Random random = new Random();
+            int a = random.nextInt(5) + 7;
+            while (Collocation.getCollocation().cells[a].getStones() == 0) {
+                a = random.nextInt(5) + 7;
+            }
+            ((SimpleCell) Collocation.getCollocation().cells[a]).act(Collocation.getCollocation());
             return Collocation.getCollocation();
-        if(node.collocation!=null)
-        return node.collocation;
-        else return Collocation.getCollocation();
+        }
+        if (node == null) {
+            System.out.println("                                                                   node");
+            return Collocation.getCollocation();
+        }
+        if (node.collocation != null)
+            return node.collocation;
+        else {
+            System.out.println("                                                          node.collocation");
+            return Collocation.getCollocation();
+        }
     }
 
     void createNodes(Node father, int count) {
+        if (father.collocation.check() != 0) {
+            father.collocation.invertPlayer();
+            father.addChild(father.collocation);
+        }
         Collocation clone = new Collocation(father.collocation);
         Collocation collocation;
-        if(clone.check()==1 || clone.check()==2)        
+        if (clone.check() == 1 || clone.check() == 2 || clone.getAllStones()[6] - clone.getAllStones()[13] > 18
+                )
             return;
-        if(clone.check()!=-1 && count > 0)
+        if (clone.check() != -1 && count > 0)
             for (int i = 0; i < 13; i++) {
-                if (!(clone.cells[i] instanceof Kalah) && clone.cells[i].getPlayer() == clone.player && clone.cells[i].getStones()!= 0) {
+                if (!(clone.cells[i] instanceof Kalah) && clone.cells[i].getPlayer() == clone.player && clone.cells[i].getStones() != 0) {
                     collocation = new Collocation(clone);
                     father.addChild(collocation);
                     ((SimpleCell) collocation.cells[i]).act(collocation);

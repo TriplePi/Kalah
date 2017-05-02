@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import models.AI;
+import models.Anek;
 import models.Collocation;
 import models.SimpleCell;
 
@@ -15,34 +16,21 @@ import java.util.Arrays;
 
 public class Controller {
     public Label whosTurnToGo;
-    @FXML
-    FlowPane oneOurs;
-    @FXML
-    FlowPane twoOurs;
-    @FXML
-    FlowPane threeOurs;
-    @FXML
-    FlowPane fourOurs;
-    @FXML
-    FlowPane fiveOurs;
-    @FXML
-    FlowPane sixOurs;
-    @FXML
-    FlowPane oneEnemys;
-    @FXML
-    FlowPane twoEnemys;
-    @FXML
-    FlowPane threeEnemys;
-    @FXML
-    FlowPane fourEnemys;
-    @FXML
-    FlowPane fiveEnemys;
-    @FXML
-    FlowPane sixEnemys;
-    @FXML
-    FlowPane oursKalah;
-    @FXML
-    FlowPane enemysKalah;
+    public FlowPane oneOurs;
+    public FlowPane twoOurs;
+    public FlowPane threeOurs;
+    public FlowPane fourOurs;
+    public FlowPane fiveOurs;
+    public FlowPane sixOurs;
+    public FlowPane oneEnemys;
+    public FlowPane twoEnemys;
+    public FlowPane threeEnemys;
+    public FlowPane fourEnemys;
+    public FlowPane fiveEnemys;
+    public FlowPane sixEnemys;
+    public FlowPane oursKalah;
+    public FlowPane enemysKalah;
+    public Label anek;
 
     @FXML
     Label oursTheFury;
@@ -52,6 +40,7 @@ public class Controller {
     Label forSomeText;
 
     boolean firstMove = true;
+    boolean playable = true;
     @FXML
     private FlowPane[] cells;
 
@@ -80,30 +69,38 @@ public class Controller {
     }
 
     public void act(MouseEvent e) {
-        //System.out.println("ahtung " + Collocation.getCollocation().getPlayer());
-        if (Collocation.getCollocation().getPlayer())
-            playerAct((FlowPane) e.getSource());
-        else
-            do {
-                botAct();
+        if (playable) {
+            //System.out.println("ahtung " + Collocation.getCollocation().getPlayer());
+            int i = 5;
+            if (Collocation.getCollocation().getPlayer())
+                playerAct((FlowPane) e.getSource());
+            else
+                do {
+                    botAct();
+                    i--;
+                }
+                while (!Collocation.getCollocation().getPlayer() && Collocation.getCollocation().check() == 0 && i > 0);
+            if (i == 0)
+                Collocation.getCollocation().invertPlayer();
+            oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]) + "/36");
+            enemysTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[13]) + "/36");
+            if (Collocation.getCollocation().getPlayer())
+                whosTurnToGo.setText("Ваш ход");
+            else whosTurnToGo.setText("Чужой");
+
+            switch (Collocation.getCollocation().check()) {
+                case -1:
+                    forSomeText.setText("Чужой победил");
+                    break;
+                case 1:
+                    forSomeText.setText("Вы победили");
+                    break;
+                case 2:
+                    forSomeText.setText("Ничья");
+                    break;
+
             }
-            while (!Collocation.getCollocation().getPlayer() && Collocation.getCollocation().check() == 0);
-        oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]) + "/36");
-        enemysTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[13]) + "/36");
-        if(Collocation.getCollocation().getPlayer())
-        whosTurnToGo.setText("Ваш ход");
-        else whosTurnToGo.setText("Чужой");
-
-        switch (Collocation.getCollocation().check()) {
-            case -1: forSomeText.setText("Чужой победил");
-            break;
-            case 1: forSomeText.setText("Вы победили");
-            break;
-            case 2: forSomeText.setText("Ничья");
-            break;
-
         }
-
     }
 
     public void synchronize() {
@@ -120,6 +117,8 @@ public class Controller {
             }
             num++;
         }
+        if(Collocation.getCollocation().check()!=0)
+            playable=false;
     }
 
     void botAct() {
@@ -161,6 +160,10 @@ public class Controller {
             }
         }
         synchronize();
+    }
+
+    public void showAnek(MouseEvent e){
+        anek.setText(Anek.getInstance().getAnek());
     }
 }
 

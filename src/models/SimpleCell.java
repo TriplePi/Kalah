@@ -16,7 +16,9 @@ public class SimpleCell extends Cell {
         return opposite;
     }
 
-    public boolean act(Collocation collocation) {
+    public void act(Collocation collocation) {
+        if(collocation.check()!=0)
+            return;
         int buffer = stones;
         this.stones = 0;
         Cell cell = getNext();
@@ -32,7 +34,7 @@ public class SimpleCell extends Cell {
 
         }
         if(cell instanceof Kalah && cell.getPlayer()==collocation.getPlayer()) {
-            return true;
+            return;
         }
         if(cell instanceof SimpleCell && cell.getPlayer()==collocation.getPlayer() && cell.getStones()-1==0){
             buffer = ((SimpleCell) cell).getOpposite().stones;
@@ -42,7 +44,6 @@ public class SimpleCell extends Cell {
         collocation.invertPlayer();
 //        if (collocation.getPlayer())
 //            System.out.println("wtf");
-        return false;
     }
 
     public void setOpposite(SimpleCell opposite) {

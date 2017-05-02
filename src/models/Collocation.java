@@ -134,9 +134,9 @@ public class Collocation {
                 else fCount+=stones[i];
             }
         }
-        if(stones[13]>36)
+        if(stones[13]>36 || (tCount==0 && stones[6]<36))
             return -1;
-        if(stones[6]>36)
+        if(stones[6]>36 || (fCount==0 && stones[13]<36))
             return 1;
         if(stones[13]==stones[6] && stones[6]==36)
             return 2;
