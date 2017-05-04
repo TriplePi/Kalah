@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import models.AI;
+import models.Anek;
 import models.Collocation;
 import models.SimpleCell;
 
@@ -15,6 +16,7 @@ import java.util.Arrays;
 
 public class Controller {
     public Label whosTurnToGo;
+    public Label anek;
 
     @FXML
     Label countForOneOurs;
