@@ -239,7 +239,7 @@ public class Controller {
     }
 
     public void showAnek(MouseEvent e){
-        anek.setText(Anek.getInstance().getAnek());
+        forSomeText.setText(Anek.getInstance().getAnek());
     }
 }
 

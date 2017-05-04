@@ -19,23 +19,9 @@ public class Anek {
     }
 
     private Anek() {
-        try {
-            aneki = new ArrayList<>();
-            File aneks = new File("forFunnyReasons.txt");
-            if(aneks != null)
-                System.out.println("vsyo OK");
-            try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(aneks), "windows-1251"))) {
-                String buffer;
-                do {
-                    buffer = br.readLine();
-                    aneki.add(buffer);
-                }
-                while (!Objects.equals(buffer, ""));
-                br.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        aneki = new ArrayList<>();
+        aneki.add("Калах - настольная логическая игра из семейств манкала");
+        aneki.add("Шел медведь по лесу, видит - машина горит\nСел в неё и сгорел");
     }
 
     public String getAnek() {

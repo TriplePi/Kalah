@@ -55,6 +55,6 @@
         <Label fx:id="countForFourEnemys" layoutX="556.0" layoutY="207.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
         <Label fx:id="countForFiveEnemys" layoutX="674.0" layoutY="207.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
         <Label fx:id="countForSixEnemys" layoutX="792.0" layoutY="207.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
-      <Label fx:id="anek" layoutX="-5.0" layoutY="14.0" prefHeight="103.0" prefWidth="103.0" text="Label" />
+      <Label fx:id="anek" layoutX="-5.0" layoutY="14.0" prefHeight="103.0" prefWidth="103.0" text="Label" onMouseClicked="#showAnek"/>
     </children>
 </AnchorPane>
