@@ -52,11 +52,14 @@ public class AI {
         }
         if (Arrays.equals(collocation.getAllStones(), node.collocation.getAllStones())) {
             System.out.println("                                                            wtf");
-            Random random = new Random();
-            int a = random.nextInt(5) + 7;
-            while (Collocation.getCollocation().cells[a].getStones() == 0) {
-                a = random.nextInt(5) + 7;
-            }
+//            Random random = new Random();
+//            int a = 7 + random.nextInt(5);
+//            while (Collocation.getCollocation().cells[a].getStones() == 0) {
+//                a = 7 + random.nextInt(5);
+//            }
+            int a = 12;
+            while (Collocation.getCollocation().cells[a].getStones()==0)
+                a--;
             ((SimpleCell) Collocation.getCollocation().cells[a]).act(Collocation.getCollocation());
             return Collocation.getCollocation();
         }
@@ -79,8 +82,7 @@ public class AI {
         }
         Collocation clone = new Collocation(father.collocation);
         Collocation collocation;
-        if (clone.check() == 1 || clone.check() == 2 || clone.getAllStones()[6] - clone.getAllStones()[13] > 18
-                )
+        if (clone.check() == 1 || clone.check() == 2 || clone.getAllStones()[6] - clone.getAllStones()[13] > 18)
             return;
         if (clone.check() != -1 && count > 0)
             for (int i = 0; i < 13; i++) {

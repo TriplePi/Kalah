@@ -240,9 +240,14 @@ public class Controller {
         synchronize();
     }
 
-    public void showAnek(MouseEvent e){
+    public void showAnek(){
         forSomeText.setText(Anek.getInstance().getAnek());
 
+    }
+
+    public void restart(){
+        Collocation.change(null);
+        synchronize();
     }
 }
 
