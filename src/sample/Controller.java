@@ -171,6 +171,7 @@ public class Controller {
 
         }
 
+
     }}
 
 
@@ -213,6 +214,7 @@ public class Controller {
 //            System.out.println(Collocation.getCollocation().check() + "sovsem ahtung");
 //            botAct();
 //        }
+        System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
     }
 
     void playerAct(FlowPane pane) {
@@ -237,6 +239,7 @@ public class Controller {
                 }
             }
         }
+        System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
         synchronize();
     }
 
