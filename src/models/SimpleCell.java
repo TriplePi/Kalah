@@ -50,8 +50,4 @@ public class SimpleCell extends Cell {
         this.opposite = opposite;
         opposite.opposite = this;
     }
-
-    int getNumber(){
-        return number;
-    }
 }

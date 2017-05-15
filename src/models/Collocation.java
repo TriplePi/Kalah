@@ -59,6 +59,10 @@ public class Collocation {
 //        }
     }
 
+    public void setPlayer(boolean player){
+        this.player = player;
+    }
+
     public Collocation(Collocation collocation) {
         cells = new Cell[14];
         for (int i = 0; i < 6; i++) {
@@ -142,15 +146,4 @@ public class Collocation {
             return 2;
         return 0;
     }
-
-//    void addToLog(String s){
-//        log.add(s);
-//        log.add("\n");
-//    }
-//
-//    public ArrayList<String> getLog(){
-//        return log;
-//    }
-
-
 }

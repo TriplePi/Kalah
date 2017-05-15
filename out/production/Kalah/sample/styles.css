@@ -1,0 +1,24 @@
+.pane {
+    -fx-background-image: url(images/main_background.png);
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1034 768;
+    -fx-background-position: center center;
+}
+
+.oursGreenStones {
+     -fx-background-image: url(images/our_stone.png);
+     -fx-background-repeat: stretch;
+     -fx-background-size: 10 10;
+     -fx-background-position: center center;
+
+ }
+
+ .forTextCounts {
+    -fx-font-size: 15pt;
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #FEED85;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-content-display: center;
+ }
+

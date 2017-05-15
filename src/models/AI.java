@@ -42,6 +42,11 @@ public class AI {
         //System.out.println(System.currentTimeMillis() - t);
         if (rates.size() == 0) {
             System.out.println("                                                              rates");
+            int a = 12;
+            while (Collocation.getCollocation().cells[a].getStones()==0)
+                a--;
+            ((SimpleCell) Collocation.getCollocation().cells[a]).act(Collocation.getCollocation());
+            Collocation.getCollocation().invertPlayer();
             return Collocation.getCollocation();
         }
         node = rates.get(Collections.max(rates.keySet()));
@@ -61,6 +66,7 @@ public class AI {
             while (Collocation.getCollocation().cells[a].getStones()==0)
                 a--;
             ((SimpleCell) Collocation.getCollocation().cells[a]).act(Collocation.getCollocation());
+            Collocation.getCollocation().invertPlayer();
             return Collocation.getCollocation();
         }
         if (node == null) {
@@ -82,7 +88,7 @@ public class AI {
         }
         Collocation clone = new Collocation(father.collocation);
         Collocation collocation;
-        if (clone.check() == 1 || clone.check() == 2 || clone.getAllStones()[6] - clone.getAllStones()[13] > 18)
+        if (clone.check() == 1 || clone.check() == 2)
             return;
         if (clone.check() != -1 && count > 0)
             for (int i = 0; i < 13; i++) {
@@ -97,16 +103,6 @@ public class AI {
             collocation = father.collocation;
             if (collocation.getAllStones()[13] > collocation.getAllStones()[6])
                 rates.put(father.collocation.getAllStones()[13] - father.collocation.getAllStones()[6], father);
-        }
-    }
-
-    void print(Node node) {
-        //System.out.println(Arrays.toString(node.collocation.getAllStones()));
-        //System.out.println(node.childs.size());
-        if (node.childs.size() != 0) {
-            for (Node child : node.childs) {
-                print(child);
-            }
         }
     }
 }

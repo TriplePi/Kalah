@@ -145,11 +145,16 @@ public class Controller {
                 whosTurnToGo.setText("Ваш ход");
             else whosTurnToGo.setText("Чужой");
         //System.out.println("ahtung " + Collocation.getCollocation().getPlayer());
-        if (Collocation.getCollocation().getPlayer())
+        if (Collocation.getCollocation().getPlayer()) {
             playerAct((FlowPane) e.getSource());
+            System.out.println("playerAct");
+            System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
+        }
         else
             do {
                 botAct();
+                System.out.println("botAct");
+                System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
             }
             while (!Collocation.getCollocation().getPlayer() && Collocation.getCollocation().check() == 0);
         oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]) + "/36");
@@ -201,11 +206,10 @@ public class Controller {
 
 
     void botAct() {
-        System.out.println("botAct");
         AI ai = new AI();
         Collocation.change(new Collocation(ai.calculate(Collocation.getCollocation())));
-        System.out.println(Collocation.getCollocation().getPlayer());
-        System.out.println(Collocation.getCollocation().check());
+        //System.out.println(Collocation.getCollocation().getPlayer());
+        //System.out.println(Collocation.getCollocation().check());
         if (!Collocation.getCollocation().getPlayer())
             System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
         synchronize();
@@ -214,10 +218,13 @@ public class Controller {
 //            System.out.println(Collocation.getCollocation().check() + "sovsem ahtung");
 //            botAct();
 //        }
-        System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
+//        System.out.println("botAct");
+//        System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
     }
 
     void playerAct(FlowPane pane) {
+//        System.out.println("botAct");
+//        System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
         if (!(pane.getId().equals("oursKalah") || pane.getId().equals("enemysKalah"))) {
             if((firstMove && pane.getId().equals("oneOurs"))) {
                 return;
@@ -235,12 +242,16 @@ public class Controller {
                 cell.act(Collocation.getCollocation());
                 synchronize();
                 if (!Collocation.getCollocation().getPlayer()) {
+
                     botAct();
+                    //System.out.println("botAct");
+                    //System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
                 }
             }
         }
-        System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
         synchronize();
+//        System.out.println("playerAct");
+//        System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
     }
 
     public void showAnek(){
@@ -250,6 +261,12 @@ public class Controller {
 
     public void restart(){
         Collocation.change(null);
+        Collocation.getCollocation().setPlayer(true);
+        playable = true;
+        firstMove = true;
+        oursTheFury.setText("0/36");
+        enemysTheFury.setText("0/36");
+        showAnek();
         synchronize();
     }
 }
