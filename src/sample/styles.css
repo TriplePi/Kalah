@@ -22,3 +22,19 @@
     -fx-content-display: center;
  }
 
+.versusStones {
+     -fx-background-image: url(images/versus_stone.png);
+     -fx-background-repeat: stretch;
+     -fx-background-size: 40 42;
+     -fx-background-position: center center;
+     -fx-content-display: left;
+
+ }
+
+ .versusLabel {
+      -fx-background-image: url(images/botVSbot.png);
+      -fx-background-repeat: stretch;
+      -fx-background-size: 632 71;
+      -fx-background-position: center center;
+
+  }

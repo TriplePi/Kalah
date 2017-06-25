@@ -144,24 +144,23 @@ public class Controller {
             if (Collocation.getCollocation().getPlayer())
                 whosTurnToGo.setText("Ваш ход");
             else whosTurnToGo.setText("Чужой");
-        //System.out.println("ahtung " + Collocation.getCollocation().getPlayer());
-        if (Collocation.getCollocation().getPlayer()) {
-            playerAct((FlowPane) e.getSource());
-            System.out.println("playerAct");
-            System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
-        }
-        else
-            do {
-                botAct();
-                System.out.println("botAct");
+            //System.out.println("ahtung " + Collocation.getCollocation().getPlayer());
+            if (Collocation.getCollocation().getPlayer()) {
+                playerAct((FlowPane) e.getSource());
+                System.out.println("playerAct");
                 System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
-            }
-            while (!Collocation.getCollocation().getPlayer() && Collocation.getCollocation().check() == 0);
-        oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]) + "/36");
-        enemysTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[13]) + "/36");
-        if (Collocation.getCollocation().getPlayer())
-            whosTurnToGo.setText("Ваш ход");
-        else whosTurnToGo.setText("Чужой");
+            } else
+                do {
+                    botAct();
+                    System.out.println("botAct");
+                    System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
+                }
+                while (!Collocation.getCollocation().getPlayer() && Collocation.getCollocation().check() == 0);
+            oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]) + "/36");
+            enemysTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[13]) + "/36");
+            if (Collocation.getCollocation().getPlayer())
+                whosTurnToGo.setText("Ваш ход");
+            else whosTurnToGo.setText("Чужой");
 
             switch (Collocation.getCollocation().check()) {
                 case -1:
@@ -174,10 +173,11 @@ public class Controller {
                     forSomeText.setText("Ничья");
                     break;
 
+            }
+
+
         }
-
-
-    }}
+    }
 
 
     public void synchronize() {
@@ -192,17 +192,16 @@ public class Controller {
                 ImageView view = new ImageView(stone);
                 cells[num].getChildren().add(view);
             }
-            if (num != 6 && num !=13)
+            if (num != 6 && num != 13)
                 if (num < 7)
                     labels[num].setText(Integer.toString(i));
                 else
                     labels[num - 1].setText(Integer.toString(i));
             num++;
         }
-        if(Collocation.getCollocation().check()!=0)
-            playable=false;
+        if (Collocation.getCollocation().check() != 0)
+            playable = false;
     }
-
 
 
     void botAct() {
@@ -226,7 +225,7 @@ public class Controller {
 //        System.out.println("botAct");
 //        System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
         if (!(pane.getId().equals("oursKalah") || pane.getId().equals("enemysKalah"))) {
-            if((firstMove && pane.getId().equals("oneOurs"))) {
+            if ((firstMove && pane.getId().equals("oneOurs"))) {
                 return;
             }
             firstMove = false;
@@ -254,17 +253,36 @@ public class Controller {
 //        System.out.println(Arrays.toString(Collocation.getCollocation().getAllStones()));
     }
 
-    public void botVsBot(){
-        if(playable)
+    public void botVsBot() {
+        if (playable)
             botAct();
+
+        oursTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[6]) + "/36");
+        enemysTheFury.setText(String.valueOf(Collocation.getCollocation().getAllStones()[13]) + "/36");
+
+        if (Collocation.getCollocation().getPlayer())
+            whosTurnToGo.setText("Бот №1");
+        else whosTurnToGo.setText("Бот №2");
+
+        switch (Collocation.getCollocation().check()) {
+            case -1:
+                forSomeText.setText("Бот №2 победил");
+                break;
+            case 1:
+                forSomeText.setText("Бот №1 победил");
+                break;
+            case 2:
+                forSomeText.setText("Ничья");
+                break;
+        }
     }
 
-    public void showAnek(){
+    public void showAnek() {
         forSomeText.setText(Anek.getInstance().getAnek());
 
     }
 
-    public void restart(){
+    public void restart() {
         Collocation.change(null);
         Collocation.getCollocation().setPlayer(true);
         playable = true;

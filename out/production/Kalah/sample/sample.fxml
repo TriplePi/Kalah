@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1030.0" snapToPixel="false" styleClass="pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="760.0" prefWidth="1030.0" snapToPixel="false" styleClass="pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <FlowPane fx:id="oneOurs" layoutX="176.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
         <FlowPane fx:id="twoOurs" layoutX="294.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
@@ -21,7 +26,7 @@
         <FlowPane fx:id="oneEnemys" layoutX="764.0" layoutY="243.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
         <FlowPane fx:id="enemysKalah" layoutX="46.0" layoutY="264.0" onMouseClicked="#act" prefHeight="165.0" prefWidth="103.0" />
         <FlowPane fx:id="oursKalah" layoutX="895.0" layoutY="317.0" onMouseClicked="#act" prefHeight="165.0" prefWidth="103.0" />
-        <Label fx:id="whosTurnToGo" alignment="CENTER" contentDisplay="CENTER" layoutX="410.0" layoutY="94.0" onMouseClicked="#start" prefHeight="70.0" prefWidth="202.0" text="touch me" textAlignment="CENTER" textFill="#5e2803" AnchorPane.bottomAnchor="610.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="418.0" AnchorPane.topAnchor="94.0">
+        <Label fx:id="whosTurnToGo" alignment="CENTER" contentDisplay="CENTER" layoutX="410.0" layoutY="99.0" onMouseClicked="#start" prefHeight="70.0" prefWidth="202.0" text="touch me" textAlignment="CENTER" textFill="#5e2803" AnchorPane.bottomAnchor="605.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="418.0" AnchorPane.topAnchor="99.0">
             <font>
                 <Font name="Comic Sans MS" size="33.0" />
             </font>
@@ -57,5 +62,39 @@
         <Label fx:id="countForSixEnemys" layoutX="792.0" layoutY="207.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
       <Label fx:id="anek" layoutX="-5.0" layoutY="7.0" onMouseClicked="#showAnek" prefHeight="96.0" prefWidth="92.0" />
       <Label layoutX="948.0" layoutY="-1.0" onMouseClicked="#restart" prefHeight="103.0" prefWidth="82.0" />
+      <Label layoutX="210.0" layoutY="5.0" prefHeight="79.0" prefWidth="609.0" styleClass="versusLabel" stylesheets="@styles.css" />
+      <Label blendMode="MULTIPLY" layoutX="-2.0" layoutY="23.0" onMouseClicked="#botVsBot" prefHeight="52.0" prefWidth="647.0" styleClass="versusStones" stylesheets="@styles.css">
+         <textFill>
+            <LinearGradient endX="0.8380952380952381" endY="0.38095238095238093" startX="0.819047619047619" startY="0.12857142857142856">
+               <stops>
+                  <Stop color="#430202" />
+                  <Stop color="#e80a0a" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill></Label>
+      <Label layoutX="375.0" layoutY="16.0" text="AI versus AI">
+         <font>
+            <Font name="Comic Sans MS Bold" size="43.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.8380952380952381" endY="0.38095238095238093" startX="0.819047619047619" startY="0.12857142857142856">
+               <stops>
+                  <Stop color="#430202" />
+                  <Stop color="#e10a0a" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Lighting diffuseConstant="2.0" specularConstant="0.93" specularExponent="40.0" surfaceScale="10.0">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant azimuth="0.0" elevation="61.74" />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+
     </children>
 </AnchorPane>
