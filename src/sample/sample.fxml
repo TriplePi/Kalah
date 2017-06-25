@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1030.0" snapToPixel="false" styleClass="pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="760.0" prefWidth="1030.0" snapToPixel="false" styleClass="pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <FlowPane fx:id="oneOurs" layoutX="176.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
         <FlowPane fx:id="twoOurs" layoutX="294.0" layoutY="394.0" onMouseClicked="#act" prefHeight="103.0" prefWidth="103.0" />
@@ -57,5 +57,6 @@
         <Label fx:id="countForSixEnemys" layoutX="792.0" layoutY="207.0" prefHeight="17.0" prefWidth="40.0" styleClass="forTextCounts" stylesheets="@styles.css" />
       <Label fx:id="anek" layoutX="-5.0" layoutY="7.0" onMouseClicked="#showAnek" prefHeight="96.0" prefWidth="92.0" />
       <Label layoutX="948.0" layoutY="-1.0" onMouseClicked="#restart" prefHeight="103.0" prefWidth="82.0" />
+      <Label layoutX="149.0" layoutY="14.0" prefHeight="70.0" prefWidth="787.0" textFill="blueviolet" text="botVSbot" onMouseClicked="#botVsBot" />
     </children>
 </AnchorPane>

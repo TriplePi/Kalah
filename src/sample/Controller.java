@@ -243,6 +243,11 @@ public class Controller {
         synchronize();
     }
 
+    public void botVsBot(){
+        if(playable)
+            botAct();
+    }
+
     public void showAnek(){
         forSomeText.setText(Anek.getInstance().getAnek());
 
